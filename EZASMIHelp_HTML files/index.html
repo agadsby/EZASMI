@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EZASMI Macro Help</title>
+<style>
+html,
+body {
+    margin: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*
+ * Main two-pane layout.
+ */
+#help {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+/*
+ * Left TOC panel.
+ */
+#sidebar {
+    width: 300px;
+    min-width: 180px;
+    max-width: 600px;
+    background: #f5f5f5;
+    border-right: 1px solid #aaa;
+    overflow-y: auto;
+}
+/*
+ * TOC heading.
+ */
+#toc-header {
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #e5e5e5;
+    border-bottom: 1px solid #aaa;
+    position: sticky;
+    top: 0;
+}
+/*
+ * TOC container.
+ */
+#toc {
+    padding: 12px;
+}
+/*
+ * Tree formatting.
+ */
+ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 18px;
+}
+li {
+    margin: 4px 0;
+    white-space: nowrap;
+}
+/*
+ * TOC entry.
+ */
+.toc-entry {
+    cursor: pointer;
+    user-select: none;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+.toc-entry:hover {
+    text-decoration: underline;
+    color: #0645ad;
+}
+/*
+ * Currently selected entry.
+ */
+.toc-entry.selected {
+    background: #d6e7ff;
+    font-weight: bold;
+}
+/*
+ * Expand/collapse marker.
+ */
+.toggle {
+    display: inline-block;
+    width: 16px;
+    font-family: monospace;
+    cursor: pointer;
+    color: #555;
+}
+.leaf {
+    display: inline-block;
+    width: 16px;
+    color: #777;
+}
+/*
+ * Child lists.
+ */
+.children {
+    display: none;
+}
+.children.open {
+    display: block;
+}
+/*
+ * Drag divider.
+ */
+#divider {
+    width: 6px;
+    background: #ccc;
+    cursor: col-resize;
+    flex-shrink: 0;
+}
+#divider:hover {
+    background: #999;
+}
+/*
+ * Right content panel.
+ */
+#content {
+    flex: 1;
+    border: none;
+    height: 100%;
+}
+</style>
+</head>
+<body>
+<div id="help">
+```
+<!--
+ * Left-hand contents panel.
+ -->
+<div id="sidebar">
+    <div id="toc-header">
+        EZASMI Macro Help
+    </div>
+    <div id="toc"></div>
+</div>
+<!--
+ * Resizable divider.
+ -->
+<div id="divider"></div>
+<!--
+ * Help content.
+ -->
+<iframe
+    id="content"
+    name="content"
+    src="cover.html">
+</iframe>
+```
+</div>
+<!--
+ * TOC XML
+ *
+ * Paste the complete TOC.XML here.
+ -->
+<script id="tocxml" type="text/xml">
+<toc version="2.0">
+<tocitem expand="true"
+         target="cover_html"
+         text="EZASMI Macro Help">
+    <tocitem expand="true"
+             target="preface_html"
+             text="Preface">
+        <tocitem target="changelog_html"
+                 text="Change Log"/>
+        <tocitem target="prereqs_html"
+                 text="Prerequisites"/>
+        <tocitem target="acknowledgments_html"
+                 text="Acknowledgments"/>
+    </tocitem>
+    <tocitem expand="true"
+             target="intro_html"
+             text="Introduction"/>
+    <tocitem expand="true"
+             target="using EZASMI_html"
+             text="Using the EZASMI Macro">
+        <tocitem expand="false"
+                 target="storage_html"
+                 text="Defining Storage"/>
+        <tocitem expand="true"
+                 target="EZASMI Functions_html"
+                 text="Supported z/OS EZASMI Functions">
+            <tocitem target="accept_html"
+                     text="ACCEPT"/>
+            <tocitem target="bind_html"
+                     text="BIND"/>
+            <tocitem target="close_html"
+                     text="CLOSE"/>
+            <tocitem target="connect_html"
+                     text="CONNECT"/>
+            <tocitem target="gethostbyaddr_html"
+                     text="GETHOSTBYADDR"/>
+            <tocitem target="gethostbyname_html"
+                     text="GETHOSTBYNAME"/>
+            <tocitem target="getpeername_html"
+                     text="GETPEERNAME"/>
+            <tocitem target="getsockname_html"
+                     text="GETSOCKNAME"/>
+            <tocitem target="initapi_html"
+                     text="INITAPI"/>
+            <tocitem target="ioctl_html"
+                     text="IOCTL"/>
+            <tocitem target="listen_html"
+                     text="LISTEN"/>
+            <tocitem target="ntop_html"
+                     text="NTOP"/>
+            <tocitem target="pton_html"
+                     text="PTON"/>
+            <tocitem target="recv_html"
+                     text="RECV"/>
+            <tocitem target="select_html"
+                     text="SELECT"/>
+            <tocitem target="send_html"
+                     text="SEND"/>
+            <tocitem target="shutdown_html"
+                     text="SHUTDOWN"/>
+            <tocitem target="socket_html"
+                     text="SOCKET"/>
+            <tocitem target="task_html"
+                     text="TASK"/>
+            <tocitem target="termapi_html"
+                     text="TERMAPI"/>
+        </tocitem>
+    </tocitem>
+    <tocitem expand="true"
+             target="additional operations_html"
+             text="Additional Operations">
+        <tocitem target="ezacic04_html"
+                 text="EZACIC04 - Translate EBCDIC to ASCII"/>
+        <tocitem target="ezacic05_html"
+                 text="EZACIC05 - Translate ASCII to EBCDIC"/>
+        <tocitem target="tpimask_html"
+                 text="TPIMASK - Test or Set Mask Bits"/>
+    </tocitem>
+    <tocitem target="messages_html"
+             text="EZASMI MNOTE Messages"/>
+    <tocitem target="installation_html"
+             text="TCP/IP for MVS 3.8 Assembler Installation"/>
+</tocitem>
+</toc>
+</script>
+<script>
+/*
+ * Convert an XML target name into
+ * the actual HTML filename.
+ *
+ * accept_html
+ *     ->
+ * accept.html
+ */
+function targetToFilename(target)
+{
+    return target.replace(
+        /_html$/,
+        ""
+    ) + ".html";
+}
+/*
+ * Remember the currently selected TOC entry.
+ */
+let selectedEntry = null;
+/*
+ * Build the TOC tree recursively.
+ */
+function buildTree(xmlNode)
+{
+    const ul =
+        document.createElement("ul");
+    Array.from(xmlNode.children).forEach(node =>
+    {
+        if (node.tagName !== "tocitem")
+            return;
+        const li =
+            document.createElement("li");
+        const children =
+            Array.from(node.children)
+                .filter(child =>
+                    child.tagName === "tocitem");
+        const hasChildren =
+            children.length > 0;
+        const text =
+            node.getAttribute("text") ||
+            "(unnamed)";
+        const target =
+            node.getAttribute("target") ||
+            "";
+        const expand =
+            node.getAttribute("expand") ===
+            "true";
+        /*
+         * Expand/collapse symbol.
+         */
+        const toggle =
+            document.createElement("span");
+        toggle.className =
+            hasChildren
+                ? "toggle"
+                : "leaf";
+        toggle.textContent =
+            hasChildren
+                ? (expand ? "−" : "+")
+                : "•";
+        /*
+         * TOC entry.
+         */
+        const entry =
+            document.createElement("span");
+        entry.className =
+            "toc-entry";
+        entry.textContent =
+            text;
+        entry.dataset.target =
+            target;
+        /*
+         * Select and load the page.
+         */
+        entry.addEventListener(
+            "click",
+            function(e)
+            {
+                e.stopPropagation();
+                /*
+                 * Remove previous selection.
+                 */
+                if (selectedEntry)
+                {
+                    selectedEntry.classList.remove(
+                        "selected"
+                    );
+                }
+                /*
+                 * Highlight this entry.
+                 */
+                selectedEntry =
+                    this;
+                selectedEntry.classList.add(
+                    "selected"
+                );
+                /*
+                 * Load help page.
+                 */
+                const filename =
+                    targetToFilename(
+                        this.dataset.target
+                    );
+                document
+                    .getElementById("content")
+                    .src =
+                    filename;
+            }
+        );
+        li.appendChild(toggle);
+        li.appendChild(entry);
+        /*
+         * Process children.
+         */
+        if (hasChildren)
+        {
+            const childContainer =
+                buildTree(node);
+            childContainer.className =
+                expand
+                    ? "children open"
+                    : "children";
+            toggle.addEventListener(
+                "click",
+                function(e)
+                {
+                    e.stopPropagation();
+                    const isOpen =
+                        childContainer
+                            .classList
+                            .toggle("open");
+                    toggle.textContent =
+                        isOpen
+                            ? "−"
+                            : "+";
+                }
+            );
+            li.appendChild(
+                childContainer
+            );
+        }
+        ul.appendChild(li);
+    });
+    return ul;
+}
+/*
+ * Parse the embedded XML
+ * and create the tree.
+ */
+function loadTOC()
+{
+    const xmlText =
+        document
+            .getElementById("tocxml")
+            .textContent;
+    const parser =
+        new DOMParser();
+    const xml =
+        parser.parseFromString(
+            xmlText,
+            "application/xml"
+        );
+    const error =
+        xml.querySelector(
+            "parsererror"
+        );
+    if (error)
+    {
+        document
+            .getElementById("toc")
+            .textContent =
+            "Error parsing TOC XML.";
+        console.error(
+            error.textContent
+        );
+        return;
+    }
+    const root =
+        xml.querySelector("toc");
+    if (!root)
+        return;
+    document
+        .getElementById("toc")
+        .appendChild(
+            buildTree(root)
+        );
+}
+/*
+ * Make the divider draggable.
+ */
+function setupDivider()
+{
+    const sidebar =
+        document.getElementById(
+            "sidebar"
+        );
+    const divider =
+        document.getElementById(
+            "divider"
+        );
+    let dragging =
+        false;
+    divider.addEventListener(
+        "mousedown",
+        function(e)
+        {
+            dragging = true;
+            document.body.style.cursor =
+                "col-resize";
+            e.preventDefault();
+        }
+    );
+    document.addEventListener(
+        "mousemove",
+        function(e)
+        {
+            if (!dragging)
+                return;
+            const width =
+                Math.max(
+                    180,
+                    Math.min(
+                        600,
+                        e.clientX
+                    )
+                );
+            sidebar.style.width =
+                width + "px";
+        }
+    );
+    document.addEventListener(
+        "mouseup",
+        function()
+        {
+            if (!dragging)
+                return;
+            dragging = false;
+            document.body.style.cursor =
+                "";
+        }
+    );
+}
+/*
+ * Start everything.
+ */
+loadTOC();
+setupDivider();
+</script>
+</body>
+</html>

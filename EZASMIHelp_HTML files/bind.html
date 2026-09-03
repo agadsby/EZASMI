@@ -1,0 +1,29 @@
+<!--
+BIND
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>
+            BIND
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>BIND</h1>
+	<h2>Parameter Considerations</h2>
+	<dl>
+		<dt><b>NAME</b>
+		<dd>There is no BPXYSOCK macro mapping the socket address structure input to the
+		BIND function. The IPv4 fields are specified in the exact order listed in the z/OS
+		documentation.
+	</dl>
+	<h2>Unsupported Parameters</h2>
+	The following keyword parameters are not supported by TCP/IP for MVS 3.8 Assembler:
+	<ul>
+		<li>ECB
+		<li>ERROR
+		<li>REQAREA
+	</ul>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!--
+INITAPI
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>
+            INITAPI
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>INITAPI</h1>
+	TCP/IP for MVS 3.8 Assembler requires that the <b>INITAPI</b> function be explicitly executed,
+	or that one of the following functions which implicitly invoke <b>INITAPI</b> be executed before
+	performing any other EZASMI function requests: <b>GETHOSTBYADDR</b>, <b>GETHOSTBYNAME</b>,
+	<b>SELECT</b>, or <b>SOCKET</b>. Note that there is no TCPIP.DATA to be read.
+	
+	<h2>Parameter Considerations</h2>
+	None.
+	
+	<h2>Unsupported Parameters</h2>
+	The only parameters supported by TCP/IP for MVS 3.8 Assembler are <b>TASK</b> and <b>MF</b>.
+	Any other parameters will be accepted, but will not affect INITAPI processing.
+	<p>
+	Note that with z/OS, the <b>MAXSOC</b> parameter may be used to specify the maximum number of
+	sockets supported by the application, with a maximum value of 65535. With MVS, the number of
+	sockets supported by an application is fixed at 1023 (socket numbers 1 through 1023).
+    </body>
+</html>

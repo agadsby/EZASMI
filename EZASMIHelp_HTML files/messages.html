@@ -1,0 +1,96 @@
+<!--
+EZASMI MNOTE Messages
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>
+            EZASMI MNOTE Messages
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>EZASMI MNOTE Messages</h1>
+        The following messages, listed in alphabetic order, are issued for errors detected during
+	assembly of the EZASMI macro.
+        <dl>
+            <dt><b>ERETMSK is required when ESNDMSK is specified</b>
+            <dd><b>Meaning: </b>The use of the <i>ESNDMSK</i> keyword parameter of the <b>SELECT</b>
+	    function requires that the <i>WRETMSK</i> keyword also be specified.
+            <p><b>User Action: </b>Specify the missing keyword parameter.<p>
+	
+            <dt><b>Function TYPE keyword required</b>
+            <dd><b>Meaning: </b>Every EZASMI macro must include the <b>TYPE</b> keyword parameter
+	    identifying the requested function.
+            <p><b>User Action: </b>Correct the error by coding the <b>TYPE</b> parameter to indicate
+	    the desired function.<p>
+
+            <dt><b>Invalid keyword value, vvvvvvvv</b>
+            <dd><b>Meaning: </b>A numeric constant has been specified for a parameter value where only
+	    the address of a value is allowed.
+            <p><b>User Action: </b>Correct the keyword value.<p>
+
+            <dt><b>Invalid list name, llllllll</b>
+            <dd><b>Meaning: </b>This is an internal error that should not occur.
+            <p><b>User Action: </b>Report this error to the developers.<p>
+
+            <dt><b>Invalid MF parm</b>
+            <dd><b>Meaning: </b>The only supported <b>MF</b> options are <i>E</i> and <i>L</i>.
+            <p><b>User Action: </b>Correct the invalid option.<p>
+
+            <dt><b>Invalid option specified, kkkkkkkk</b>
+            <dd><b>Meaning: </b>The keyword <i>kkkkkkkk</i> is not valid with the specified function
+	    <b>TYPE</b>.
+            <p><b>User Action: </b>Correct the error by changing or removing the invalid keyword.<p>
+
+            <dt><b>Invalid parameter value, kkkkkkkk</b>
+            <dd><b>Meaning: </b>The value specified for keyword <i>kkkkkkkk</i> is not valid.
+            <p><b>User Action: </b>Correct the keyword value.<p>
+	    
+            <dt><b>Invalid TYPE value, tttttttt</b>
+            <dd><b>Meaning: </b>The <b>TYPE</b> parameter value of <i>tttttttt</i> is not the name
+	    of a supported EZASMI function.
+            <p><b>User Action: </b>Correct the invalid function name.<p>
+
+            <dt><b>Keyword value vvvvvvvv greater than mmmmmmmm</b>
+            <dd><b>Meaning: </b>The value of a numeric constant keyword parameter value is greater
+	    than the maximum value allowed.
+            <p><b>User Action: </b>Correct the keyword value.<p>
+
+            <dt><b>Missing label for LIST form</b>
+            <dd><b>Meaning: </b>The <b>EZASMI MF=L</b> macro statement must include a label so that
+	    the <i>MF=E</i> form may refer to it.
+            <p><b>User Action: </b>Provide a statement label.<p>
+
+            <dt><b>Missing required option, kkkkkkkk</b>
+            <dd><b>Meaning: </b>The specified function <b>TYPE</b> requires that keyword <i>kkkkkkkk</i>
+	    be specified.
+            <p><b>User Action: </b>Provide the required keyword and value.<p>
+
+            <dt><b>Missing value string, kkkkkkkk</b>
+            <dd><b>Meaning: </b>This is an internal error that should not occur.
+            <p><b>User Action: </b>Report this error to the developers.<p>
+
+            <dt><b>No LIST specified for E form of macro</b>
+            <dd><b>Meaning: </b>The <i>E</i> option of the <b>MF</b> parameter requires that you specify
+	    the address of the parameter list storage area.
+            <p><b>User Action: </b>Correct the <b>MF</b> parameter by specifying the address of the
+	    parameter list.<p>
+
+            <dt><b>RRETMSK is required when RSNDMSK is specified</b>
+            <dd><b>Meaning: </b>The use of the <i>RSNDMSK</i> keyword parameter of the <b>SELECT</b>
+	    function requires that the <i>RRETMSK</i> keyword also be specified.
+            <p><b>User Action: </b>Specify the missing keyword parameter.<p>
+
+            <dt><b>Unknown keyword kkkkkkkk</b>
+            <dd><b>Meaning: </b>The valid keyword <i>kkkkkkkk</i> is not properly defined in the EZASMI
+	    macro set. This is an internal error that should not occur.
+            <p><b>User Action: </b>Report this error to the developers.<p>
+
+            <dt><b>WRETMSK is required when WSNDMSK is specified</b>
+            <dd><b>Meaning: </b>The use of the <i>WSNDMSK</i> keyword parameter of the <b>SELECT</b>
+	    function requires that the <i>WRETMSK</i> keyword also be specified.
+            <p><b>User Action: </b>Specify the missing keyword parameter.<p>
+        </dl>
+    </body>
+</html>

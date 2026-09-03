@@ -1,0 +1,270 @@
+                               EEEEEEEEEEEE  ZZZZZZZZZZZZ   AAAAAAAAAA    SSSSSSSSSS   MM        MM   IIIIIIIIII
+                              EEEEEEEEEEEE  ZZZZZZZZZZZZ  AAAAAAAAAAAA  SSSSSSSSSSSS  MMM      MMM   IIIIIIIIII
+                             EE                     ZZ   AA        AA  SS        SS  MMMM    MMMM       II
+                            EE                    ZZ    AA        AA  SS            MM MM  MM MM       II
+                           EE                   ZZ     AA        AA  SSS           MM  MMMM  MM       II
+                          EEEEEEEE         ZZZZZZZ    AAAAAAAAAAAA   SSSSSSSSS    MM   MM   MM       II
+                         EEEEEEEE         ZZZZZZZ    AAAAAAAAAAAA    SSSSSSSSS   MM        MM       II
+                        EE                ZZ        AA        AA           SSS  MM        MM       II
+                       EE               ZZ         AA        AA            SS  MM        MM       II
+                      EE              ZZ          AA        AA  SS        SS  MM        MM       II
+                     EEEEEEEEEEEE   ZZZZZZZZZZZ  AA        AA  SSSSSSSSSSSS  MM        MM   IIIIIIIIII
+                    EEEEEEEEEEEE  ZZZZZZZZZZZZ  AA        AA   SSSSSSSSSS   MM        MM   IIIIIIIIII
+
+
+
+                    JJJJJJJJJJ       11        2222222222     00000000                                 AAAAAAAAAA
+                    JJJJJJJJJJ      111       222222222222   0000000000                               AAAAAAAAAAAA
+                        JJ         1111       22        22  00      0000                              AA        AA
+                        JJ           11                 22  00     00 00                              AA        AA
+                        JJ           11                 22  00    00  00                              AA        AA
+                        JJ           11                22   00   00   00                              AAAAAAAAAAAA
+                        JJ           11              22     00  00    00                              AAAAAAAAAAAA
+                        JJ           11            22       00 00     00                              AA        AA
+                  JJ    JJ           11          22         0000      00                              AA        AA
+                  JJ    JJ           11        22           000       00                              AA        AA
+                  JJJJJJJJ       1111111111   222222222222   0000000000                               AA        AA
+                   JJJJJJ        1111111111   222222222222    00000000                                AA        AA
+
+
+****A  START  JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120  START  A****
+****A  START  JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120  START  A****
+****A  START  JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120  START  A****
+****A  START  JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120  START  A****
+                                                J E S 2   J O B   L O G
+
+
+11.26.09 JOB  120  $HASP373 EZASMI   STARTED - INIT  1 - CLASS A - SYS TK5R
+11.26.09 JOB  120  IEF403I EZASMI - STARTED - TIME=11.26.09
+11.26.09 JOB  120 *IEF233A M 480,EZASMI,,EZASMI,EZASOH03
+11.26.16 JOB  120  IEFACTRT - Stepname  Procstep  Program   Retcode
+11.26.16 JOB  120  EZASMI     EZASOH03            IEBCOPY   RC= 0000
+11.26.16 JOB  120  EZASMI     EZASMI              IEBCOPY   RC= 0000
+11.26.16 JOB  120  IEF234E K 480,EZASMI,PVT,EZASMI,OPTSRCE
+11.26.16 JOB  120  EZASMI     OPTSRCE             IEBCOPY   RC= 0000
+11.26.16 JOB  120  IEF404I EZASMI - ENDED - TIME=11.26.16
+11.26.16 JOB  120  $HASP395 EZASMI   ENDED
+
+
+------ JES2 JOB STATISTICS ------
+
+
+ 02 SEP 26 JOB EXECUTION DATE
+
+
+        64 CARDS READ
+
+
+       181 SYSOUT PRINT RECORDS
+
+
+         0 SYSOUT PUNCH RECORDS
+
+
+      0.11 MINUTES EXECUTION TIME
+    1     //EZASMI   JOB USER=HERC01,PASSWORD=,REGION=2048K                       JOB  120
+          ********************************************************************/
+          ***                                                                */
+          *** This JCL will install the EZASOH03 load module into            */
+          *** SYS2.LINKLIB, and the set of EZASMI macros into SYS2.MACLIB.   */
+          *** The optional source material will be copied to SYS2.ASM.       */
+          ***                                                                */
+          ********************************************************************/
+          ***
+          ***
+    2     //EZASOH03 EXEC PGM=IEBCOPY
+          ********************************************************************/
+          ***                                                                */
+          *** This step will copy the EZASOH03 load module into SYS2.LINKLIB.*/
+          *** If you choose to use a different load module library, modify   */
+          *** the LOADLIB DD accordingly.                                    */
+          ***                                                                */
+          ********************************************************************/
+    3     //TAPE     DD   DSN=EZASOH03,UNIT=TAPE,VOL=(,RETAIN,SER=EZASMI),
+          //  DISP=(,KEEP)
+    4     //LOADLIB  DD   DSN=SYS2.LINKLIB,DISP=OLD
+    5     //SYSPRINT DD   SYSOUT=*
+    6     //SYSIN    DD   *
+          ***
+          ***
+    7     //EZASMI   EXEC PGM=IEBCOPY
+          ********************************************************************/
+          ***                                                                */
+          *** This step will copy the EZASMI macro set into SYS2.MACLIB.     */
+          *** If you choose to use a different macro library, modify the     */
+          *** MACLIB DD accordingly.                                         */
+          ***                                                                */
+          ********************************************************************/
+    8     //TAPE     DD   DSN=EZASMI,UNIT=TAPE,VOL=(,RETAIN,SER=EZASMI),
+          //  LABEL=2,DISP=(,KEEP)
+    9     //MACLIB   DD   DSN=SYS2.MACLIB,DISP=OLD
+   10     //SYSPRINT DD   SYSOUT=*
+   11     //SYSIN    DD   *
+          ***
+          ***
+   12     //OPTSRCE  EXEC PGM=IEBCOPY
+          ********************************************************************/
+          ***                                                                */
+          *** This step will copy the optional source into SYS2.ASM. You may */
+          *** skip this step altogether, modify which modules are copied, or */
+          *** change the library to which the modules are copied (SOURCE DD).*/
+          ***                                                                */
+          ********************************************************************/
+   13     //TAPE     DD   DSN=OPTSRCE,UNIT=TAPE,VOL=SER=EZASMI,
+          //  LABEL=3,DISP=(,KEEP)
+   14     //SOURCE   DD   DSN=SYS2.ASM,
+          //            DISP=(NEW,CATLG,DELETE),
+          //            SPACE=(TRK,(10,10,5)),
+          //            UNIT=SYSALLDA,
+          //            DCB=(DSORG=PO,RECFM=FB,LRECL=80,BLKSIZE=800)
+   15     //SYSPRINT DD   SYSOUT=*
+   16     //SYSIN    DD   *
+IEF236I ALLOC. FOR EZASMI EZASOH03
+IEF237I 480  ALLOCATED TO TAPE
+IEF237I 390  ALLOCATED TO LOADLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF142I EZASMI EZASOH03 - STEP WAS EXECUTED - COND CODE 0000
+IEF285I   EZASOH03                                     KEPT          *--------4
+IEF285I   VOL SER NOS= EZASMI.
+IEF285I   SYS2.LINKLIB                                 KEPT          *--------3
+IEF285I   VOL SER NOS= TK5RES.
+IEF285I   JES2.JOB00120.SO0104                         SYSOUT
+IEF285I   JES2.JOB00120.SI0101                         SYSIN
+IEF373I STEP /EZASOH03/ START 26245.1126
+IEF374I STEP /EZASOH03/ STOP  26245.1126 CPU    0MIN 00.06SEC SRB    0MIN 00.01SEC VIRT  1076K SYS   204K
+************************************************************************************************************************************
+*     1. Jobstep of job: EZASMI      Stepname: EZASOH03    Program name: IEBCOPY    Executed on 02.09.26 from 11.26.09 to 11.26.16 *
+*         elapsed time  00:00:06,74                      CPU-Identifier:  TK5R           Page-in:      0                           *
+*             CPU time  00:00:00,07               Virtual Storage used:   1076K         Page-out:      0                           *
+*           corr. CPU:  00:00:00,07   CPU time has been corrected by  1 / 1,0  multiplier                                          *
+*                                                                                                                                  *
+*     I/O Operation                                                                                                                *
+*     Number of records read via DD * or DD DATA:      1                                                                           *
+*     480.......4 390.......3 DMY.......0 DMY.......0                                                                              *
+*                                                                                                                                  *
+*                                          Charge for step (w/o SYSOUT):          0,11                                             *
+************************************************************************************************************************************
+IEF236I ALLOC. FOR EZASMI EZASMI
+IEF237I 480  ALLOCATED TO TAPE
+IEF237I 390  ALLOCATED TO MACLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF142I EZASMI EZASMI - STEP WAS EXECUTED - COND CODE 0000
+IEF285I   EZASMI                                       KEPT          *-------49
+IEF285I   VOL SER NOS= EZASMI.
+IEF285I   SYS2.MACLIB                                  KEPT          *--------7
+IEF285I   VOL SER NOS= TK5RES.
+IEF285I   JES2.JOB00120.SO0105                         SYSOUT
+IEF285I   JES2.JOB00120.SI0102                         SYSIN
+IEF373I STEP /EZASMI  / START 26245.1126
+IEF374I STEP /EZASMI  / STOP  26245.1126 CPU    0MIN 00.07SEC SRB    0MIN 00.01SEC VIRT  1076K SYS   208K
+************************************************************************************************************************************
+*     2. Jobstep of job: EZASMI      Stepname: EZASMI      Program name: IEBCOPY    Executed on 02.09.26 from 11.26.16 to 11.26.16 *
+*         elapsed time  00:00:00,12                      CPU-Identifier:  TK5R           Page-in:      0                           *
+*             CPU time  00:00:00,08               Virtual Storage used:   1076K         Page-out:      0                           *
+*           corr. CPU:  00:00:00,08   CPU time has been corrected by  1 / 1,0  multiplier                                          *
+*                                                                                                                                  *
+*     I/O Operation                                                                                                                *
+*     Number of records read via DD * or DD DATA:      1                                                                           *
+*     480......49 390.......7 DMY.......0 DMY.......0                                                                              *
+*                                                                                                                                  *
+*                                          Charge for step (w/o SYSOUT):          0,13                                             *
+************************************************************************************************************************************
+IEF236I ALLOC. FOR EZASMI OPTSRCE
+IEF237I 480  ALLOCATED TO TAPE
+IEF237I 192  ALLOCATED TO SOURCE
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF142I EZASMI OPTSRCE - STEP WAS EXECUTED - COND CODE 0000
+IEF285I   OPTSRCE                                      KEPT          *-------60
+IEF285I   VOL SER NOS= EZASMI.
+IEF287I   SYS2.ASM                                     NOT CATLGD  2 *--------7
+IEF287I   VOL SER NOS= TSO003.
+IEF285I   JES2.JOB00120.SO0106                         SYSOUT
+IEF285I   JES2.JOB00120.SI0103                         SYSIN
+IEF373I STEP /OPTSRCE / START 26245.1126
+IEF374I STEP /OPTSRCE / STOP  26245.1126 CPU    0MIN 00.07SEC SRB    0MIN 00.01SEC VIRT  1076K SYS   208K
+************************************************************************************************************************************
+*     3. Jobstep of job: EZASMI      Stepname: OPTSRCE     Program name: IEBCOPY    Executed on 02.09.26 from 11.26.16 to 11.26.16 *
+*         elapsed time  00:00:00,19                      CPU-Identifier:  TK5R           Page-in:      0                           *
+*             CPU time  00:00:00,08               Virtual Storage used:   1076K         Page-out:      0                           *
+*           corr. CPU:  00:00:00,08   CPU time has been corrected by  1 / 1,0  multiplier                                          *
+*                                                                                                                                  *
+*     I/O Operation                                                                                                                *
+*     Number of records read via DD * or DD DATA:      2                                                                           *
+*     480......60 192.......7 DMY.......0 DMY.......0                                                                              *
+*                                                                                                                                  *
+*                                          Charge for step (w/o SYSOUT):          0,13                                             *
+************************************************************************************************************************************
+IEF375I  JOB /EZASMI  / START 26245.1126
+IEF376I  JOB /EZASMI  / STOP  26245.1126 CPU    0MIN 00.20SEC SRB    0MIN 00.03SEC
+                                        IEBCOPY MESSAGES AND CONTROL STATEMENTS                               PAGE 0001
+
+
+                     COPY I=((TAPE,R)),O=LOADLIB
+IEB167I  FOLLOWING MEMBER(S)  LOADED  FROM INPUT DATA SET REFERENCED BY TAPE     -
+IEB154I  EZACIC04 HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  EZACIC05 HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  EZASOH03 HAS BEEN SUCCESSFULLY  LOADED
+IEB144I  THERE ARE 0000216 UNUSED TRACKS IN OUTPUT DATA SET REFERENCED BY LOADLIB
+IEB149I  THERE ARE 0000127  UNUSED DIRECTORY BLOCKS IN OUTPUT DIRECTORY
+IEB147I  END OF JOB -00 WAS HIGHEST SEVERITY CODE                                        IEBCOPY MESSAGES AND CONTROL STATEMENTS                               PAGE 0001
+
+
+                     COPY I=((TAPE,R)),O=MACLIB
+IEB167I  FOLLOWING MEMBER(S)  LOADED  FROM INPUT DATA SET REFERENCED BY TAPE     -
+IEB154I  EZASMI   HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  EZASMIA  HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  EZASMIC  HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  EZASMIP  HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  TPIMASK  HAS BEEN SUCCESSFULLY  LOADED
+IEB144I  THERE ARE 0000004 UNUSED TRACKS IN OUTPUT DATA SET REFERENCED BY MACLIB
+IEB149I  THERE ARE 0000015  UNUSED DIRECTORY BLOCKS IN OUTPUT DIRECTORY
+IEB147I  END OF JOB -00 WAS HIGHEST SEVERITY CODE                                        IEBCOPY MESSAGES AND CONTROL STATEMENTS                               PAGE 0001
+
+
+                     COPY I=((TAPE,R)),O=SOURCE
+                     SELECT M=(EZASOH03,EZACIC04,EZACIC05,NSLOOKUP,NCAT)
+IEB167I  FOLLOWING MEMBER(S)  LOADED  FROM INPUT DATA SET REFERENCED BY TAPE     -
+IEB154I  EZACIC04 HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  EZACIC05 HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  EZASOH03 HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  NCAT     HAS BEEN SUCCESSFULLY  LOADED
+IEB154I  NSLOOKUP HAS BEEN SUCCESSFULLY  LOADED
+IEB144I  THERE ARE 0000004 UNUSED TRACKS IN OUTPUT DATA SET REFERENCED BY SOURCE
+IEB149I  THERE ARE 0000004  UNUSED DIRECTORY BLOCKS IN OUTPUT DIRECTORY
+IEB147I  END OF JOB -00 WAS HIGHEST SEVERITY CODE                               EEEEEEEEEEEE  ZZZZZZZZZZZZ   AAAAAAAAAA    SSSSSSSSSS   MM        MM   IIIIIIIIII
+                              EEEEEEEEEEEE  ZZZZZZZZZZZZ  AAAAAAAAAAAA  SSSSSSSSSSSS  MMM      MMM   IIIIIIIIII
+                             EE                     ZZ   AA        AA  SS        SS  MMMM    MMMM       II
+                            EE                    ZZ    AA        AA  SS            MM MM  MM MM       II
+                           EE                   ZZ     AA        AA  SSS           MM  MMMM  MM       II
+                          EEEEEEEE         ZZZZZZZ    AAAAAAAAAAAA   SSSSSSSSS    MM   MM   MM       II
+                         EEEEEEEE         ZZZZZZZ    AAAAAAAAAAAA    SSSSSSSSS   MM        MM       II
+                        EE                ZZ        AA        AA           SSS  MM        MM       II
+                       EE               ZZ         AA        AA            SS  MM        MM       II
+                      EE              ZZ          AA        AA  SS        SS  MM        MM       II
+                     EEEEEEEEEEEE   ZZZZZZZZZZZ  AA        AA  SSSSSSSSSSSS  MM        MM   IIIIIIIIII
+                    EEEEEEEEEEEE  ZZZZZZZZZZZZ  AA        AA   SSSSSSSSSS   MM        MM   IIIIIIIIII
+
+
+
+                    JJJJJJJJJJ       11        2222222222     00000000                                 AAAAAAAAAA
+                    JJJJJJJJJJ      111       222222222222   0000000000                               AAAAAAAAAAAA
+                        JJ         1111       22        22  00      0000                              AA        AA
+                        JJ           11                 22  00     00 00                              AA        AA
+                        JJ           11                 22  00    00  00                              AA        AA
+                        JJ           11                22   00   00   00                              AAAAAAAAAAAA
+                        JJ           11              22     00  00    00                              AAAAAAAAAAAA
+                        JJ           11            22       00 00     00                              AA        AA
+                  JJ    JJ           11          22         0000      00                              AA        AA
+                  JJ    JJ           11        22           000       00                              AA        AA
+                  JJJJJJJJ       1111111111   222222222222   0000000000                               AA        AA
+                   JJJJJJ        1111111111   222222222222    00000000                                AA        AA
+
+
+****A   END   JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120   END   A****
+****A   END   JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120   END   A****
+****A   END   JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120   END   A****
+****A   END   JOB  120  EZASMI                          ROOM       11.26.16 AM 02 SEP 26  PRINTER1  SYS TK5R  JOB  120   END   A****
+

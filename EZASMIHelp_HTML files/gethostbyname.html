@@ -1,0 +1,35 @@
+<!--
+GETHOSTBYNAME
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>
+            GETHOSTBYNAME
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>GETHOSTBYNAME</h1>
+	<h2>Parameter Considerations</h2>
+	<dl>
+		<dt><b>HOSTENT</b>
+		<dd>TCP/IP for MVS 3.8 Assembler returns only a subset of the information returned
+		by z/OS as follows:
+			<ul>
+				<li>No alias names are returned; the address of the alias_list will
+				be zero.
+				<li>Only a single INET address is returned.
+			</ul>
+		The returned <i>HOSTENT</i> structure is unique for each task using EZASMI functions.
+		If any task issues multiple function requests returning a <i>HIOSTENT</i> structure,
+		any prior information in the structure will be overlaid; you should save any required
+		data before issuing subsequent requests.
+	</dl>
+	<h2>Unsupported Parameters</h2>
+	The following keyword parameters are not supported by TCP/IP for MVS 3.8 Assembler:
+	<ul>
+		<li>ERROR
+	</ul>
+    </body>
+</html>
