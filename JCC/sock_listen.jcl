@@ -1,7 +1,10 @@
-//JCCLSTN JOB USER=%user%,PASSWORD=%pass%,REGION=8M
+//JCCECHO JOB USER=%user%,PASSWORD=%pass%,REGION=8M
 //*
 //*
-//* Example echo listener for MVS on JCC
+//* Example echo listener for MVS using JCC
+//* Once running use "netcat 127.0.0.1 8030" to connect
+//*
+//* Once finished enter "END"
 //*
 //MAIN  EXEC JCCCG
 //COMPILE.SYSIN    DD *
@@ -9,7 +12,7 @@
 #include <string.h>
 #include <sockets.h>
 
-#define PORT    8830
+#define PORT    8830    // change as required
 
  /* 
   * send an ebcdic string converting to ascii before sending
@@ -34,6 +37,9 @@ send_ascii(int fd, char *ebuf, int len) {
     return rc;
 }
 
+ /* 
+  * receive an ascii string converting to ebcdic for MVS
+  */
 int
 recv_ascii(int fd, char *ebuf, int len) {
     char *a;    // ascii incoming data
@@ -44,7 +50,6 @@ recv_ascii(int fd, char *ebuf, int len) {
 
     if ((rl = recv(fd, ebuf, len - 1, 0)) <= 0)
         return rl;
-    ebuf[rl] = '\0';    // guard
     
     ascii2ebcdic(ebuf, rl);   // NOTE: in-situ
     
@@ -65,7 +70,7 @@ main() {
     
     /* Due to the way the MVS sockets work, old sockets may
      * be left open at the system level if a previous
-     * creator dies. This loop will close ALL open sockets.
+     * creator dies. Uncomment this loop to close ALL open sockets.
      */
     // int p;
     // for (p = 0; p < 1000; p++)
@@ -143,8 +148,7 @@ main() {
     // Close the server listening socket
     closesocket(server_fd);
     _write2op("JCC server: exited");
-    exit(0);
+    return(0);
 }
 /*
-@@
 //
